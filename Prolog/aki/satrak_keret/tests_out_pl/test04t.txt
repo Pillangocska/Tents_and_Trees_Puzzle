@@ -1,0 +1,28 @@
+[[e,e,n,s,w,n,s,w,w],[w,w,s,n,w,s,n,e,e]].
+end_of_file.
+PossibleDirections:[[s],[s,w,e],[n,s,e],[n,s,w],[n,s,w,e],[n,s,e],[n,s,w],[n,w,e],[n,w,e]]IndexOfOne:1PossibleDirections:[[w],[s,w,e],[n,s,e],[n,s,w],[n,s,w,e],[n,s,e],[n,s,w],[n,w,e],[n,w,e]]IndexOfOne:1PossibleDirections:[[w],[e,w,s],[s],[w,s,n],[e,w,s,n],[e,s,n],[w,s,n],[e,w,n],[e,w,n]]IndexOfOne:3PossibleDirections:[[w],[s,w,e],[s],[n,s,w],[n,s,w,e],[s],[n,s,w],[w,e],[n,w,e]]IndexOfOne:6PossibleDirections:[[w],[e,w,s],[s],[w,s,n],[e,w,s,n],[s],[w,s,n],[e],[e,w,n]]IndexOfOne:8PossibleDirections:[[w],[s,w,e],[s],[n,s,w],[n,w,e],[s],[n,s],[e],[e]]IndexOfOne:9PossibleDirections:[[w],[e,w,s],[s],[w,s,n],[e,w,n],[s],[n],[e],[e]]IndexOfOne:7PossibleDirections:[[w],[w,e],[s],[n],[w],[s],[n],[e],[e]]IndexOfOne:4PossibleDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]IndexOfOne:2PossibleDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]IndexOfOne:5TempReturnCheckedArr:[[e]-0,[e]-0,[n]-0,[s]-0,[w]-0,[n]-0,[s]-0,[w]-0,[w]-0]NewPossibleSumDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]TempReturnCheckedArr:[[e]-0,[e]-0,[n]-0,[s]-0,[w]-0,[n]-0,[s]-0,[w]-0,[w]-0]NewPossibleSumDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]TempReturnCheckedArr:[[e]-0,[e]-0,[n]-0,[s]-0,[w]-0,[n]-0,[s]-0,[w]-0,[w]-0]NewPossibleSumDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]TempReturnCheckedArr:[[e]-0,[e]-0,[n]-0,[s]-0,[w]-0,[n]-0,[s]-0,[w]-0,[w]-0]NewPossibleSumDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]TempReturnCheckedArr:[[e]-0,[e]-0,[n]-0,[s]-0,[w]-0,[n]-0,[s]-0,[w]-0,[w]-0]NewPossibleSumDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]TempReturnCheckedArr:[[e]-0,[e]-0,[n]-0,[s]-0,[w]-0,[n]-0,[s]-0,[w]-0,[w]-0]NewPossibleSumDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]TempReturnCheckedArr:[[e]-0,[e]-0,[n]-0,[s]-0,[w]-0,[n]-0,[s]-0,[w]-0,[w]-0]NewPossibleSumDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]TempReturnCheckedArr:[[e]-0,[e]-0,[n]-0,[s]-0,[w]-0,[n]-0,[s]-0,[w]-0,[w]-0]NewPossibleSumDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]TempReturnCheckedArr:[[e]-0,[e]-0,[n]-0,[s]-0,[w]-0,[n]-0,[s]-0,[w]-0,[w]-0]NewPossibleSumDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]TempReturnCheckedArr:[[e]-0,[e]-0,[n]-0,[s]-0,[w]-0,[n]-0,[s]-0,[w]-0,[w]-0]NewPossibleSumDirections:[[w],[w],[s],[n],[w],[s],[n],[e],[e]]      3  0  3  0  3
+    +--+--+--+--+--+
+  3 |S--F |S--F |S |
+    +--+--+--+--+|-+
+  0 |F |  |  |  |F |
+    +|-+--+--+--+--+
+  3 |S |  |S--F |S |
+    +--+--+--+--+|-+
+  0 |F |  |  |  |F |
+    +|-+--+--+--+--+
+  3 |S |F--S |F--S |
+    +--+--+--+--+--+
+
+PossibleDirections:[[e],[s,w,e],[n,s,e],[n,s,w],[n,s,w,e],[n,s,e],[n,s,w],[n,w,e],[n,w,e]]IndexOfOne:1PossibleDirections:[[e],[e],[s,n],[s,n],[e,w,s],[e,s,n],[w,s,n],[e,w,n],[e,w,n]]IndexOfOne:2PossibleDirections:[[e],[e],[n,s],[s],[s,w,e],[n,s,e],[n,s,w],[n,w,e],[n,w,e]]IndexOfOne:4PossibleDirections:[[e],[e],[s,n],[s],[w],[e,s,n],[s],[e,w,n],[e,w]]IndexOfOne:5PossibleDirections:[[e],[e],[n,s],[s],[w],[n,s],[s],[w,e],[w,e]]IndexOfOne:7PossibleDirections:[[e],[e],[s,n],[s],[w],[s,n],[s],[e,w],[w]]IndexOfOne:9PossibleDirections:[[e],[e],[n,s],[s],[w],[n,s],[s],[w],[w]]IndexOfOne:8PossibleDirections:[[e],[e],[s,n],[s],[w],[n],[s],[w],[w]]IndexOfOne:6PossibleDirections:[[e],[e],[n],[s],[w],[n],[s],[w],[w]]IndexOfOne:3TempReturnCheckedArr:[[w]-0,[w]-0,[s]-0,[n]-0,[w]-0,[s]-0,[n]-0,[e]-0,[e]-0]NewPossibleSumDirections:[[e],[e],[n],[s],[w],[n],[s],[w],[w]]TempReturnCheckedArr:[[w]-0,[w]-0,[s]-0,[n]-0,[w]-0,[s]-0,[n]-0,[e]-0,[e]-0]NewPossibleSumDirections:[[e],[e],[n],[s],[w],[n],[s],[w],[w]]TempReturnCheckedArr:[[w]-0,[w]-0,[s]-0,[n]-0,[w]-0,[s]-0,[n]-0,[e]-0,[e]-0]NewPossibleSumDirections:[[e],[e],[n],[s],[w],[n],[s],[w],[w]]TempReturnCheckedArr:[[w]-0,[w]-0,[s]-0,[n]-0,[w]-0,[s]-0,[n]-0,[e]-0,[e]-0]NewPossibleSumDirections:[[e],[e],[n],[s],[w],[n],[s],[w],[w]]TempReturnCheckedArr:[[w]-0,[w]-0,[s]-0,[n]-0,[w]-0,[s]-0,[n]-0,[e]-0,[e]-0]NewPossibleSumDirections:[[e],[e],[n],[s],[w],[n],[s],[w],[w]]TempReturnCheckedArr:[[w]-0,[w]-0,[s]-0,[n]-0,[w]-0,[s]-0,[n]-0,[e]-0,[e]-0]NewPossibleSumDirections:[[e],[e],[n],[s],[w],[n],[s],[w],[w]]TempReturnCheckedArr:[[w]-0,[w]-0,[s]-0,[n]-0,[w]-0,[s]-0,[n]-0,[e]-0,[e]-0]NewPossibleSumDirections:[[e],[e],[n],[s],[w],[n],[s],[w],[w]]TempReturnCheckedArr:[[w]-0,[w]-0,[s]-0,[n]-0,[w]-0,[s]-0,[n]-0,[e]-0,[e]-0]NewPossibleSumDirections:[[e],[e],[n],[s],[w],[n],[s],[w],[w]]TempReturnCheckedArr:[[w]-0,[w]-0,[s]-0,[n]-0,[w]-0,[s]-0,[n]-0,[e]-0,[e]-0]NewPossibleSumDirections:[[e],[e],[n],[s],[w],[n],[s],[w],[w]]TempReturnCheckedArr:[[w]-0,[w]-0,[s]-0,[n]-0,[w]-0,[s]-0,[n]-0,[e]-0,[e]-0]NewPossibleSumDirections:[[e],[e],[n],[s],[w],[n],[s],[w],[w]]      3  0  3  0  3
+    +--+--+--+--+--+
+  3 |S |F--S |F--S |
+    +|-+--+--+--+--+
+  0 |F |  |  |  |F |
+    +--+--+--+--+|-+
+  3 |S |  |S--F |S |
+    +|-+--+--+--+--+
+  0 |F |  |  |  |F |
+    +--+--+--+--+|-+
+  3 |S--F |S--F |S |
+    +--+--+--+--+--+
+

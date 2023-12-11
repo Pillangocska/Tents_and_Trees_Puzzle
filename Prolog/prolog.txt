@@ -1,0 +1,64 @@
+   3 0 3 0 3
+ 3 - F - F -
+ 0 F - - - F
+ 3 - - - F -
+ 0 F - - - F
+ 3 - F - F -
+ 
+Bemenet: TentsPerRow: { [3,0,3,0,3], TentsPerColumn: [3,0,3,0,3], Trees: [1-2,1-4,2-1,2-5,3-4,4-1,4-5,5-2,5-4] }
+
+1: Főfüggvény
+RowLength: 5
+ColumnLength: 5
+TreeLength: 9
+TreeIndexes: [1,2,3,4,5,6,7,8,9]
+	1.1: Összegefeltételek előállítása (col(1,3): az első oszlopban 3 sátornak kell lennie)
+	AllSumConditions:[col(1,3),col(2,0),col(3,3),col(4,0),col(5,3),row(1,3),row(2,0),row(3,3),row(4,0),row(5,3)]
+	
+	1.2: Kezdeti iránylista előállítása (ebben a lépésben csak az Outofbounds, és másik fába ütközést vizsgáljuk)
+	PossibleDirections[[s,w,e],[s,w,e],[n,s,e],[n,s,w],[n,s,w,e],[n,s,e],[n,s,w],[n,w,e],[n,w,e]]
+	
+	1.3: Főciklus meghívása
+	choice_point_filter(Dir(választási pont ami később inicializlódik), Trees[1-2,1-4,2-1,2-5,3-4,4-1,4-5,5-2,5-4], TreeIndexes[1,2,3,4,5,6,7,8,9], AllSumConditions, PossibleDirections)
+	A meghivas elott: Dir_7567 A meghivott fg-ben: Dir2 s Dir2 w Dir2 e
+
+2: choice_point_filter
+	PossibleDirections-ből kiválasztjuk az i.(currentindex) elemet, és belőle egy irányt
+	1. elem a kiválasztott: [s,w,e]
+	Dir:s Possible (régi):[[s,w,e],[s,w,e],[n,s,e],[n,s,w],[n,s,w,e],[n,s,e],[n,s,w],[n,w,e],[n,w,e]]
+	NewPossible(új):[[s],[s,w,e],[n,s,e],[n,s,w],[n,s,w,e],[n,s,e],[n,s,w],[n,w,e],[n,w,e]] itt az "s" a következő iterációban "w" aztán "e"
+	Az új iránylistára meghívjuk a 
+
+3: filter
+	Az alkalmazás főciklusa
+	3.1: Sátorszűkítéssel próbálkozás
+		find_single_element_index(TreeIndexes, PossibleDirections, 1, IndexOfOne), Megnézzük van-e 1 -es elem a PossibleDirections-ben
+		tent_filter(Trees, IndexOfOne, PossibleDirections, NewPossibleDirections), Ha van akk sátorszűkítés.
+		filter_element_from_list(IndexOfOne, TreeIndexes,[], UpdatedTreeIndexes), Kivesszük az egyes indexet(ahol egxelemu irany volt) a falistából.
+		filter(Trees, NewPossibleDirections, UpdatedTreeIndexes, AllSumConditions, Return), ! Majd meghívjuk megint a függvényt.
+	3.2: Összegszűkítés
+		select(SumCondition, AllSumConditions, NewAllSumConditions), SumCondition itt nem definiált még ezért minden lehetséges értékre ki lesz próbálva
+		sum_filter(Trees, SumCondition, PossibleDirections, NewPossibleDirections), tehát az összes lehetséges értékére meghívjuk a sum_filter fg-t, 
+			de az első sikeresnél backtrack: tehát csak az első sikeres SumCondition fog kiértékelődni
+		filter(Trees, NewPossibleDirections, TreeIndexes, NewAllSumConditions, Return), ! Majd megint rekurzio.
+	filter(0, PossibleDirections, TreeIndexes, AllSumConditions, Return) Ha semelyik sem sikeres akkor visszatérünk a choice_point_filter-be
+
+Ha elfogytak a TreeIndexes & AllSumConditions akkor visszatérünk flatten-el
+Kimenet: Solution: [w,w,s,n,w,s,n,e,e][e,e,n,s,w,n,s,w,w]
+
+Sátorszűkítés:
+	Ha a bemeneti iránylista i. eleme egy egy elemű iránylista akkor:
+		ha nincs ilyen elem vagy az előálló szűkített listában legalább egy üreslista akkor a szűkítés nem alkalmazható
+		ha alkalmazható akkor az I. fához tartozó parcella oldal vagy sarokszomszédjait kivesszük a többi fa iránylistájából
+
+Összegszűkítés:
+	biztos: ha a fához tartozó iránylista bármely elemének választása esetén az adott (az általunk vizsgált összegfeltétel) sorba/oszlopba kerül
+	esetleg: ha a fához tartozó iránylista legalább egy elemének választása esetén az adott sorba/oszlopba kerül
+		1: b + e < Db -> ILs = [] azaz nincs megoldás adott paraméterrel
+		2: b + e = Db -> összes esetleges fának az adott sorba/oszlopba kell mutatnia -> ha B_and_E =:= Db, igaz akkor megyunk tovabb
+		3: b = DB -> semelyik esetleges fának nem szabad oda mutatnia
+		4: b > Db -> ugyanaz mint az első opció
+
+Flags \= [].
+	So, Flags \= []. checks if the variable or term Flags is not unifiable with an empty list. In simpler terms, 
+	it's checking if Flags is not an empty list. If Flags is indeed not an empty list, this statement will be true, otherwise false.

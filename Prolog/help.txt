@@ -1,0 +1,3 @@
+cd Prolog
+sicstus
+[khf5]. % ezzel compile
