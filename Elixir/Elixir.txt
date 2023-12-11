@@ -1,0 +1,135 @@
+1: A program bekéri a feladványt leíró 3 ast: {[1, 1, 1], [1, 0, 2], [{1, 1}, {2, 3}, {3, 2}]}
+2: A gen_tent_coordinates és gen_tent_coord_for_direction fg-ekkel legeneráljuk a lehetséges irányokat:
+itt most csak a palya szeleit, es a tobbi fat nezzuk
+ezzel a fg-el:
+tent_coord_map = Enum.reduce(trees, Map.new, fn t, acc ->
+    gen_tent_coordinates(acc, t, n, m, trees)
+  end)
+
+ezt kapjuk:
+tent_coord_map: %{
+  {{1, 1}, :e} => {1, 2},
+  {{1, 1}, :n} => :invalid,
+  {{1, 1}, :s} => {2, 1},
+  {{1, 1}, :w} => :invalid,
+  {{2, 3}, :e} => :invalid,
+  {{2, 3}, :n} => {1, 3},
+  {{2, 3}, :s} => {3, 3},
+  {{2, 3}, :w} => {2, 2},
+  {{3, 2}, :e} => {3, 3},
+  {{3, 2}, :n} => {2, 2},
+  {{3, 2}, :s} => :invalid,
+  {{3, 2}, :w} => {3, 1}
+}
+
+3: a fenti tent_coord_map osszes elemen ami nem invalid vegigmegyunk
+dfs fg ->
+
+iter: 3
+previous_tents: []
+current_tree: {1, 1}
+validation: {:n, :invalid, :invalid}
+validation: {:e, {1, 2}, :invalid}
+validation: {:s, {2, 1}, [[0, 1, 0], [1, 0, 0]]}
+validation: {:w, :invalid, :invalid}
+target_tents_count_rows: [1, 1, 1]
+current_target_count_rows: [0, 0, 0]
+target_tents_count_cols: [1, 0, 2]
+current_target_count_cols: [0, 0, 0]
+
+iter: 2
+previous_tents: [{2, 1}]
+current_tree: {2, 3}
+validation: {:n, {1, 3}, [[1, 1, 0], [1, 0, 1]]}
+validation: {:e, :invalid, :invalid}
+validation: {:s, {3, 3}, [[0, 1, 1], [1, 0, 1]]}
+validation: {:w, {2, 2}, :invalid}
+target_tents_count_rows: [1, 1, 1]
+current_target_count_rows: [0, 1, 0]
+target_tents_count_cols: [1, 0, 2]
+current_target_count_cols: [1, 0, 0]
+
+iter: 1
+previous_tents: [{1, 3}, {2, 1}]
+current_tree: {3, 2}
+validation: {:n, {2, 2}, :invalid}
+validation: {:e, {3, 3}, [[1, 1, 1], [1, 0, 2]]}
+validation: {:s, :invalid, :invalid}
+validation: {:w, {3, 1}, :invalid}
+target_tents_count_rows: [1, 1, 1]
+current_target_count_rows: [1, 1, 0]
+target_tents_count_cols: [1, 0, 2]
+current_target_count_cols: [1, 0, 1]
+dir: :e
+recursive_solutions: [[]]
+dir: :n
+recursive_solutions: [[:e]]
+
+iter: 1
+previous_tents: [{3, 3}, {2, 1}]
+current_tree: {3, 2}
+validation: {:n, {2, 2}, :invalid}
+validation: {:e, {3, 3}, :invalid}
+validation: {:s, :invalid, :invalid}
+validation: {:w, {3, 1}, :invalid}
+target_tents_count_rows: [1, 1, 1]
+current_target_count_rows: [0, 1, 1]
+target_tents_count_cols: [1, 0, 2]
+current_target_count_cols: [1, 0, 1]
+dir: :s
+recursive_solutions: []
+dir: :s
+recursive_solutions: [[:n, :e]]
+
+Hogy kapjuk meg a vegen az osszefuzott megoldast?
+recursive_solutions + dir
+
+n: Visszatérünk a megoldással: [[:s, :n, :e]]
+
+test:
+iex -S mix
+Nhf1.satrak({[1, 1, 1], [1, 0, 2], [{1, 1}, {2, 3}, {3, 2}]})
+IO.inspect(dir, label: "dir")
+List.duplicate(0, n): n elemu 0-akbol allo listat csinal
+
+
+  1 0 2
+1 *
+1     *
+1   *
+
+
+Enum.reduce
+	Enum.reduce iterates over a collection, accumulating a single value from that collection. 
+	It takes three arguments: the collection, an initial accumulator value, and a function. The function 
+	is applied to each element of the collection in turn, along with the current value of the accumulator, 
+	and the result becomes the new accumulator value.
+	Example: Enum.reduce([1, 2, 3], 0, fn x, acc -> x + acc end) would sum up the values in the list, resulting in 6.
+Enum.filter
+	Enum.filter filters a collection based on a given condition. It takes the collection and a function that returns a boolean 
+	(true or false). It keeps an element in the collection if the function returns true for that element, and removes it otherwise.
+	Example: Enum.filter([1, 2, 3, 4], fn x -> rem(x, 2) == 0 end) would return [2, 4], keeping only even numbers.
+Enum.flat_map
+	Enum.flat_map is similar to Enum.map, but instead of returning a list of lists, it flattens the result into a single list. 
+	It applies a function to each element of the collection, where the function must return a list, and then concatenates all these lists into one.
+	Example: Enum.flat_map([1, 2, 3], fn x -> [x, x * 10] end) would return [1, 10, 2, 20, 3, 30].
+Enum.map
+	Enum.map transforms each element in a collection. It takes a collection and a function, applies this function to every element of 
+	the collection, and returns a new collection with the results.
+	Example: Enum.map([1, 2, 3], fn x -> x * x end) would return [1, 4, 9], squaring each number in the list.
+Map.get
+	Map.get is used to retrieve a value from a map based on a key. It takes a map, a key, and an optional default value 
+	(returned if the key is not found in the map).
+	Example: Map.get(%{"a" => 1, "b" => 2}, "a") would return 1, the value associated with the key "a".
+
+
+
+
+
+
+
+
+
+
+
+
